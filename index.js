@@ -1,11 +1,17 @@
 'use strict'
 
+// npm
 const got = require('got')
+const RLP = require('rate-limit-promise')
 
-const fetchByTitle = (title) => got(`http://wiki.facil.qc.ca/api.php?format=json&action=query&titles=${title}&prop=contributors|fileusage|info|pageprops|redirects|revisions`, { json: true })
+const rateLimter = new RLP(6, 10000)
+
+const fetchByTitle = (title) => rateLimter()
+  .then(got.bind(null, `http://wiki.facil.qc.ca/api.php?format=json&action=query&titles=${title}&prop=contributors|fileusage|info|pageprops|redirects|revisions`, { json: true }))
   .then((x) => x.body.query)
   .then((x) => {
     if (!x.pages) { throw new Error('Should result in a single page id.') }
+    if (x.pages['-1']) { throw new Error('Not found.') }
     const pageids = Object.keys(x.pages)
     if (pageids.length !== 1) { throw new Error('Should result in a single page id.') }
     const d = x.pages[pageids[0]]

@@ -11,9 +11,9 @@ wi.wrk2('Communautés d\'utilisateurs et de développeurs de logiciels libres au
     console.log(JSON.stringify(out2, null, ' '))
   })
   .catch((e) => {
-    console.error('EE:', e))
+    console.error('EE:', e)
     done = true
-  }
+  })
 
 const i = setInterval(() => {
   if (done) { clearInterval(i) }

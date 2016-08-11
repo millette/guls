@@ -4,7 +4,7 @@
 const got = require('got')
 const RLP = require('rate-limit-promise')
 
-const rateLimter = new RLP(6, 10000)
+const rateLimter = new RLP(6, 6000)
 
 const fetchByTitle = (title) => rateLimter()
   .then(got.bind(null, `http://wiki.facil.qc.ca/api.php?format=json&action=query&titles=${title}&prop=contributors|fileusage|info|pageprops|redirects|revisions`, { json: true }))

@@ -1,15 +1,28 @@
 {
   "name": "guls",
   "version": "0.0.1",
-  "description": "",
+  "description": "Gully gully!",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
   "scripts": {
     "lint": "standard",
     "test": "standard"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["guls", "québec", "quebec", "cli"],
+  "repository": "millette/guls",
+  "author": {
+    "name": "Robin Millette",
+    "email": "robin@millette.info",
+    "url": "http://robin.millette.info"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "license": "AGPL-3.0",
   "dependencies": {
     "got": "^6.3.0",
     "rate-limit-promise": "^1.0.2"

@@ -68,13 +68,13 @@ const wrk = (pages) => new Promise((resolve, reject) => {
         if (out.length === pages.length) { resolve(out) }
       })
       .catch((e) => {
-        out.push({ error: 404, page: page })
+        out.push({ error: 404, title: page })
         if (out.length === pages.length) { resolve(out) }
       })
   })
 })
 
-const fetchAll = (page) => fetchTablePage(page)
+const fetchAll = (page, keepWikitext) => fetchTablePage(page, keepWikitext)
   .then((x) => Promise.all([x, wrk(x.rows.map((y) => y.Nom.slice(2, -2)))]))
   .then((x) => {
     return {

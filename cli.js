@@ -5,7 +5,7 @@
 const wi = require('./')
 
 var done = false
-wi.fetchAll('Communautés d\'utilisateurs et de développeurs de logiciels libres au Québec')
+wi('Communautés d\'utilisateurs et de développeurs de logiciels libres au Québec')
   .then((out2) => {
     done = true
     console.log(JSON.stringify(out2, null, ' '))

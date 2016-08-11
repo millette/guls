@@ -76,8 +76,14 @@ const wrk = (pages) => new Promise((resolve, reject) => {
 
 const fetchAll = (page) => fetchTablePage(page)
   .then((x) => Promise.all([x, wrk(x.rows.map((y) => y.Nom.slice(2, -2)))]))
+  .then((x) => {
+    return {
+      main: x[0],
+      subs: x[1]
+    }
+  })
 
-fetchTablePage.fetchAll = fetchAll
-fetchTablePage.fetchByTitle = fetchByTitle
+fetchAll.tablePage = fetchTablePage
+fetchAll.byTitle = fetchByTitle
 
-module.exports = fetchTablePage
+module.exports = fetchAll

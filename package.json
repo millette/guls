@@ -9,9 +9,15 @@
   ],
   "scripts": {
     "lint": "standard",
-    "test": "standard"
+    "test": "standard && nyc ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
-  "keywords": ["guls", "québec", "quebec", "cli"],
+  "keywords": [
+    "guls",
+    "québec",
+    "quebec",
+    "cli"
+  ],
   "repository": "millette/guls",
   "author": {
     "name": "Robin Millette",
@@ -28,6 +34,13 @@
     "rate-limit-promise": "^1.0.2"
   },
   "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-eslint": "^6.1.2",
+    "coveralls": "^2.11.12",
+    "nyc": "^7.1.0",
     "standard": "^7.1.2"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

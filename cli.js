@@ -4,6 +4,9 @@
 
 const wi = require('./')
 
+wi.updateDb('Communautés d\'utilisateurs et de développeurs de logiciels libres au Québec', true)
+
+/*
 var done = false
 
 wi('Communautés d\'utilisateurs et de développeurs de logiciels libres au Québec', true)
@@ -19,3 +22,4 @@ wi('Communautés d\'utilisateurs et de développeurs de logiciels libres au Qué
 const i = setInterval(() => {
   if (done) { clearInterval(i) }
 }, 300)
+*/

@@ -15,6 +15,7 @@ test('byTitle, redir', async t => {
 test('byTitle, nope', async t => await t.throws(fn.byTitle('Mon666treal WordPress Community'), 'Not found.'))
 
 /*
-fn.tablePage(() === fetchTablePage()
+fn.tablePage() === fetchTablePage()
+fn.updateDb() === updateDb()
 fn() === fetchAll()
 */

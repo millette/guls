@@ -31,6 +31,7 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "got": "^6.3.0",
+    "nano": "^6.2.0",
     "rate-limit-promise": "^1.0.2"
   },
   "devDependencies": {

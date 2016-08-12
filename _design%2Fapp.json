@@ -15,6 +15,10 @@
     },
     "bytitle": {
       "map": "function(doc) {\n  if (!doc.tableData) { return }\n  emit(doc.title, doc.title)\n  if (doc.redirects && doc.redirects.length) {\n    doc.redirects.forEach(function (x) {\n      emit(x.title, doc.title)\n    })\n  }\n}\n\n"
+    },
+    "bycategory": {
+      "map": "function(doc) {\n  if (!doc.tableData) { return }\n\n  if (doc.categories && doc.categories.length) {\n    doc.categories.forEach(function (x) { emit(x['*'], doc.title) })\n  } else {\n    emit('*', doc.title)\n  }\n}\n\n",
+      "reduce": "_count"
     }
   }
 }

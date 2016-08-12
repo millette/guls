@@ -3,7 +3,8 @@
   "language": "javascript",
   "views": {
     "bysize": {
-      "map": "function(doc) {\n  if (!doc.tableData) { return }\n  emit(doc.length, doc.title);\n}"
+      "map": "function(doc) {\n  if (!doc.tableData) { return }\n  if (!doc.length) {\n    emit([false], doc.title);\n  } else {\n    emit([true, Math.ceil(doc.length / 1000)], doc.title);\n  }\n}",
+      "reduce": "_count"
     },
     "bysoftware": {
       "map": "function(doc) {\n  if (!doc.tableData) { return }\n  emit(doc.tableData['Logiciel(s)'] || '*', doc.title)\n}\n\n",

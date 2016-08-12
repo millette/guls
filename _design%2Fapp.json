@@ -1,0 +1,20 @@
+{
+  "_id": "_design/app",
+  "language": "javascript",
+  "views": {
+    "bysize": {
+      "map": "function(doc) {\n  if (!doc.tableData) { return }\n  emit(doc.length, doc.title);\n}"
+    },
+    "bysoftware": {
+      "map": "function(doc) {\n  if (!doc.tableData) { return }\n  emit(doc.tableData['Logiciel(s)'] || '*', doc.title)\n}\n\n",
+      "reduce": "_count"
+    },
+    "bylocation": {
+      "map": "function(doc) {\n  if (!doc.tableData) { return }\n  const loc = doc.tableData['Lieu(x)'] || '*'\n  emit(loc.indexOf('Montréal') === -1 ? loc : 'Montréal', doc.title)\n}\n\n",
+      "reduce": "_count"
+    },
+    "bytitle": {
+      "map": "function(doc) {\n  if (doc.tableData) {\n    emit(doc.title, doc.title)\n  }\n}\n\n"
+    }
+  }
+}

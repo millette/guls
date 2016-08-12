@@ -1,6 +1,7 @@
 {
   "_id": "_design/app",
   "language": "javascript",
+  "validate_doc_update": "function (newDoc, oldDoc, userCtx, secObj) { if (!userCtx.roles.length) { throw({ forbidden: 'Can\\'t touch this.' }) } }",
   "views": {
     "bysize": {
       "map": "function(doc) {\n  if (!doc.tableData) { return }\n  if (!doc.length) {\n    emit([false], doc.title);\n  } else {\n    emit([true, Math.ceil(doc.length / 1000)], doc.title);\n  }\n}",
